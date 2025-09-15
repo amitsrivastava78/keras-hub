@@ -10,7 +10,9 @@ except ImportError:
 # Export ModelParallel utilities
 from keras_hub.src.utils.modelparallel_utils import (
     is_modelparallel_active as _is_modelparallel_active,
-    load_weights_with_modelparallel_awareness as _load_weights_with_modelparallel_awareness,
+)
+from keras_hub.src.utils.modelparallel_utils import (
+    load_weights_with_modelparallel_awareness as _load_weights_mp,
 )
 
 
@@ -61,4 +63,4 @@ def is_modelparallel_active():
 @keras_hub_export("keras_hub.utils.load_weights_with_modelparallel_awareness")
 def load_weights_with_modelparallel_awareness(model, filepath):
     """Load weights with ModelParallel awareness to prevent OOM errors."""
-    return _load_weights_with_modelparallel_awareness(model, filepath)
+    return _load_weights_mp(model, filepath)
