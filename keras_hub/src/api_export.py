@@ -7,6 +7,12 @@ try:
 except ImportError:
     namex = None
 
+# Export ModelParallel utilities
+from keras_hub.src.utils.modelparallel_utils import (
+    is_modelparallel_active as _is_modelparallel_active,
+    load_weights_with_modelparallel_awareness as _load_weights_with_modelparallel_awareness,
+)
+
 
 def maybe_register_serializable(path, symbol):
     if isinstance(path, (list, tuple)):
@@ -43,3 +49,16 @@ else:
         def __call__(self, symbol):
             maybe_register_serializable(self.path, symbol)
             return symbol
+
+
+# Export ModelParallel utilities
+@keras_hub_export("src.utils.is_modelparallel_active")
+def is_modelparallel_active():
+    """Check if ModelParallel distribution is currently active."""
+    return _is_modelparallel_active()
+
+
+@keras_hub_export("src.utils.load_weights_with_modelparallel_awareness")
+def load_weights_with_modelparallel_awareness(model, filepath):
+    """Load weights with ModelParallel awareness to prevent OOM errors."""
+    return _load_weights_with_modelparallel_awareness(model, filepath)
