@@ -13,6 +13,9 @@ from keras_hub.src.api_export import keras_hub_export
 from keras_hub.src.utils import tensor_utils
 from keras_hub.src.utils.keras_utils import print_msg
 from keras_hub.src.utils.keras_utils import sharded_weights_available
+from keras_hub.src.utils.modelparallel_utils import (
+    load_weights_with_modelparallel_awareness,
+)
 from keras_hub.src.utils.tensor_utils import get_tensor_size_in_bits
 
 try:
@@ -813,7 +816,9 @@ class KerasPresetLoader(PresetLoader):
             for sharded_filename in sharded_filenames:
                 # Download the sharded weights.
                 _ = get_file(self.preset, sharded_filename)
-        backbone.load_weights(filepath)
+
+        # Use ModelParallel-aware weight loading to prevent OOM errors
+        load_weights_with_modelparallel_awareness(backbone, filepath)
 
 
 class KerasPresetSaver:
