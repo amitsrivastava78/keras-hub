@@ -67,6 +67,7 @@ def is_modelparallel_active():
     "keras_hub.utils.load_weights_with_modelparallel_awareness"
 )
 def load_weights_with_modelparallel_awareness(model, filepath):
+    print("🚀🚀🚀 LOAD_WEIGHTS_WITH_MODELPARALLEL_AWARENESS CALLED! 🚀🚀🚀")
     """
     Load weights with ModelParallel awareness to prevent OOM errors.
 
