@@ -19,3 +19,9 @@ from keras_hub.src.utils.imagenet.imagenet_utils import (
 from keras_hub.src.utils.imagenet.imagenet_utils import (
     imagenet_name_to_id as imagenet_name_to_id,
 )
+from keras_hub.src.utils.modelparallel_utils import (
+    is_modelparallel_active as is_modelparallel_active,
+)
+from keras_hub.src.utils.modelparallel_utils import (
+    load_weights_with_modelparallel_awareness as load_weights_with_modelparallel_awareness,
+)
