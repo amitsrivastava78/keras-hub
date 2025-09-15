@@ -678,7 +678,7 @@ class KerasPresetLoader(PresetLoader):
         return self._load_serialized_object(converter_config, **kwargs)
 
     def load_task(self, cls, load_weights, load_task_weights, **kwargs):
-        print(f"🎯 KerasPresetLoader.load_task() called!")
+        print("🎯 KerasPresetLoader.load_task() called!")
         print(f"   Task class: {cls.__name__}")
         print(f"   load_weights: {load_weights}")
         print(f"   load_task_weights: {load_task_weights}")
@@ -709,7 +709,9 @@ class KerasPresetLoader(PresetLoader):
         ):
             task.preprocessor.load_preset_assets(self.preset)
         if load_weights:
-            print("🎯 Task loading: load_weights=True, calling _load_backbone_weights")
+            print(
+                "🎯 Task loading: load_weights=True, calling _load_backbone_weights"
+            )
             has_task_weights = check_file_exists(self.preset, TASK_WEIGHTS_FILE)
             if has_task_weights and load_task_weights:
                 print("🎯 Task loading: Found task weights, loading them first")
@@ -717,7 +719,9 @@ class KerasPresetLoader(PresetLoader):
                 task_weights = get_file(self.preset, TASK_WEIGHTS_FILE)
                 task.load_task_weights(task_weights)
             else:
-                print("🎯 Task loading: No task weights, cleaning up backbone memory")
+                print(
+                    "🎯 Task loading: No task weights, cleaning up backbone memory"
+                )
                 jax_memory_cleanup(task.backbone)
             print("🎯 Task loading: About to call _load_backbone_weights")
             self._load_backbone_weights(task.backbone)

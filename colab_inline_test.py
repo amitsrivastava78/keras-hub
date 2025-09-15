@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-"""
-Colab Installation Test - Verify our changes are installed
-
-This test checks if our debug prints are working in Colab.
-"""
+# Colab Inline Test - Copy and paste this into a Colab cell
 
 import os
 
