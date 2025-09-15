@@ -52,13 +52,13 @@ else:
 
 
 # Export ModelParallel utilities
-@keras_hub_export("src.utils.is_modelparallel_active")
+@keras_hub_export("utils.is_modelparallel_active")
 def is_modelparallel_active():
     """Check if ModelParallel distribution is currently active."""
     return _is_modelparallel_active()
 
 
-@keras_hub_export("src.utils.load_weights_with_modelparallel_awareness")
+@keras_hub_export("utils.load_weights_with_modelparallel_awareness")
 def load_weights_with_modelparallel_awareness(model, filepath):
     """Load weights with ModelParallel awareness to prevent OOM errors."""
     return _load_weights_with_modelparallel_awareness(model, filepath)
