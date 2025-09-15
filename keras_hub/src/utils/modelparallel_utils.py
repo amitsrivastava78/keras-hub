@@ -49,11 +49,13 @@ def is_modelparallel_active():
             current_dist, keras.distribution.ModelParallel
         )
 
+        print("=" * 60)
         print("🔍 DEBUG is_modelparallel_active():")
         print(
             f"   Current distribution: {type(current_dist).__name__ if current_dist else 'None'}"
         )
         print(f"   Is ModelParallel: {is_active}")
+        print("=" * 60)
 
         return is_active
     except ImportError as e:
@@ -81,11 +83,13 @@ def load_weights_with_modelparallel_awareness(model, filepath):
         RuntimeError: If sharded weights are not available when needed
         OSError: If weight files cannot be loaded
     """
+    print("=" * 80)
     print("🔍 DEBUG load_weights_with_modelparallel_awareness():")
     print(f"   Model: {type(model).__name__}")
     print(f"   Model name: {getattr(model, 'name', 'Unknown')}")
     print(f"   Filepath: {filepath}")
     print(f"   Keras version: {keras.__version__}")
+    print("=" * 80)
 
     is_mp_active = is_modelparallel_active()
     print(f"   ModelParallel active: {is_mp_active}")

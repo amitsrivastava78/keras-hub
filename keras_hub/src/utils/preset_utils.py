@@ -798,6 +798,9 @@ class KerasPresetLoader(PresetLoader):
         return sorted(filenames)
 
     def _load_backbone_weights(self, backbone):
+        print("🚀 _load_backbone_weights() called!")
+        print(f"   Backbone: {type(backbone).__name__}")
+        print(f"   Backbone name: {getattr(backbone, 'name', 'Unknown')}")
         # Detect if the backbone is sharded or not.
         has_single_file_weights = check_file_exists(
             self.preset, MODEL_WEIGHTS_FILE
